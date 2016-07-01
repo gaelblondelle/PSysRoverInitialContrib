@@ -14,7 +14,6 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.polarsys.rover.driver.pi.pwmgen.pca9685.PCA9685PWMGenerator;
 import org.polarsys.rover.driver.pwmgen.IPWMOutput;
 
 public class PCA9685PWMGeneratorTest {

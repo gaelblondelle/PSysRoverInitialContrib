@@ -14,18 +14,22 @@ Module Structure
 Building the Library/Samples from Source
 ----------------------------------------
 
-The Java code is built using Maven (http://maven.apache.org/). The top-level Maven module is located in the folder "releng". Switch to this folder and type
+The Java code is built using Maven (http://maven.apache.org/). The top-level Maven module is located in the folder 'releng'. Switch to this folder and type
 
 	mvn clean install 
 	
 to build the library and all samples. The created .jar files are then located in the target folders of the corresponding modules. Please refer to the JavaDoc 
-of the demo applications how to use them and how to setup your hardware.
+of the sample applications how to use them and how to setup your hardware.
 
+Setup Eclipse
+-------------
+
+You must have installed the Maven integration for Eclipse (m2e - Maven Integration for Eclipse) available from the Eclipse update site. Then, you can import 
+the Maven modules as Eclipse projects using the command File -> Import -> Existing Maven Projects. Choose the folder that contains this file as 'Root Directory'.
 
 Requirements
 ------------
 
  * JDK 8 or higher
  * Maven 3.3 or higher
- 
- * Raspberry Pi to run the demo applications.
+ * Raspberry Pi to run the sample applications; Tests are hardware independent.

@@ -63,6 +63,7 @@ public class PCA9685PWMGenerator implements IPWMGenerator {
 		this.device = device;
 	}
 
+	@Override
 	public void open() throws IOException {
 		setAllPWM(0, 0);
 		device.write(REG_MODE2, OUTDRV);
@@ -180,6 +181,11 @@ public class PCA9685PWMGenerator implements IPWMGenerator {
 			return pwmFrequency;
 		}
 
+	}
+
+	@Override
+	public void close() throws IOException {
+		// TODO Any cleanup required?
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.polarsys.rover.driver.pwmgen;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 /**
@@ -9,7 +10,14 @@ import java.io.IOException;
  * @author Ralf Ellner - Initial contribution and API.
  *
  */
-public interface IPWMGenerator {
+public interface IPWMGenerator extends Closeable {
+
+	/**
+	 * Initialize the PWM generator.
+	 * 
+	 * @throws IOException
+	 */
+	public void open() throws IOException;
 
 	/**
 	 * Set the PWM frequency. This frequency applies to all outputs.
