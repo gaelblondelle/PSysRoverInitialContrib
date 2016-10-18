@@ -1,5 +1,5 @@
-runtimes/java
-=============
+Sample Web Application
+======================
 
 This module contains a sample application that allows you to control the rover using a web browser.
 
