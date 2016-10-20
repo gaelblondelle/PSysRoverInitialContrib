@@ -37,6 +37,12 @@
       <manifestation xmi:type="uml:Manifestation" xmi:id="__bEecJMyEeaLL8vSmYjlJQ" client="_7tEisJMyEeaLL8vSmYjlJQ" supplier="_ISSQYJMrEeaLL8vSmYjlJQ" utilizedElement="_ISSQYJMrEeaLL8vSmYjlJQ"/>
     </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="__vGEAJcfEeay2cJPAzKhuA" name="Use Case View">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_m5e_4JcgEeay2cJPAzKhuA" name="Create route plan"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_pue3EJcgEeay2cJPAzKhuA" client="_m5e_4JcgEeay2cJPAzKhuA">
+      <supplier xmi:type="uml:Activity" href="20_System_Architecture.uml#_HX958JPrEeavqMTMGnq4ag"/>
+    </packagedElement>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FuaUIJLYEeaaqdRRN-YoCg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Fua7MJLYEeaaqdRRN-YoCg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
