@@ -53,6 +53,7 @@
     <extend xmi:type="uml:Extend" xmi:id="_B2qDAJMmEeaLL8vSmYjlJQ" extendedCase="_T6USMJMlEeaLL8vSmYjlJQ" extensionLocation="_B2qqEJMmEeaLL8vSmYjlJQ"/>
     <extend xmi:type="uml:Extend" xmi:id="_I83QsJMmEeaLL8vSmYjlJQ" extendedCase="_VKFQ8JMlEeaLL8vSmYjlJQ" extensionLocation="_I83QsZMmEeaLL8vSmYjlJQ"/>
     <extend xmi:type="uml:Extend" xmi:id="_Jor04JMmEeaLL8vSmYjlJQ" extendedCase="_iM9RYJMlEeaLL8vSmYjlJQ" extensionLocation="_Josb8JMmEeaLL8vSmYjlJQ"/>
+    <extend xmi:type="uml:Extend" xmi:id="_uhp64JcPEeay2cJPAzKhuA" extendedCase="_-rH1oJcLEeay2cJPAzKhuA" extensionLocation="_uhrJAJcPEeay2cJPAzKhuA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Actor" xmi:id="_wR1hYJMlEeaLL8vSmYjlJQ" name="Charging Station"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_yp6zEJMlEeaLL8vSmYjlJQ" memberEnd="_yp7aIJMlEeaLL8vSmYjlJQ _yp7aIZMlEeaLL8vSmYjlJQ">
@@ -62,7 +63,9 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_yp7aIJMlEeaLL8vSmYjlJQ" name="charge" type="_sZDR8JMlEeaLL8vSmYjlJQ" association="_yp6zEJMlEeaLL8vSmYjlJQ"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_yp7aIZMlEeaLL8vSmYjlJQ" name="charging station" type="_wR1hYJMlEeaLL8vSmYjlJQ" association="_yp6zEJMlEeaLL8vSmYjlJQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:UseCase" xmi:id="_-rH1oJcLEeay2cJPAzKhuA" name="Operate Actuators"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_-rH1oJcLEeay2cJPAzKhuA" name="Operate Actuators">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uhrJAJcPEeay2cJPAzKhuA" name="ExtensionPoint1"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_C10UcJcMEeay2cJPAzKhuA" memberEnd="_C13-0JcMEeay2cJPAzKhuA _C13-0ZcMEeay2cJPAzKhuA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_C12JoJcMEeay2cJPAzKhuA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_C12wsJcMEeay2cJPAzKhuA" key="nature" value="UML_Nature"/>
