@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_KP9FsJMlEeaLL8vSmYjlJQ" name="Use Cases">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KSwiEJMlEeaLL8vSmYjlJQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_KS2osJMlEeaLL8vSmYjlJQ">
+    <importedPackage xmi:type="uml:Package" href="pathmap://SysML14_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_OgZAIJMlEeaLL8vSmYjlJQ" name="Remote Control User"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_QoiYYJMlEeaLL8vSmYjlJQ" name="Autonomous Function User"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_Swh_oJMlEeaLL8vSmYjlJQ" name="Drive Rover">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_0wSCoJMlEeaLL8vSmYjlJQ" name="Low Power"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_T6USMJMlEeaLL8vSmYjlJQ" name="Drive to Coordinates">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_B2qqEJMmEeaLL8vSmYjlJQ" name="Low Power"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_VKFQ8JMlEeaLL8vSmYjlJQ" name="Record Floor Plan">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_I83QsZMmEeaLL8vSmYjlJQ" name="Low Power"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Xf21gJMlEeaLL8vSmYjlJQ" memberEnd="_Xf3ckJMlEeaLL8vSmYjlJQ _Xf3ckZMlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Xf21gZMlEeaLL8vSmYjlJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Xf21gpMlEeaLL8vSmYjlJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Xf3ckJMlEeaLL8vSmYjlJQ" name="drive rover" type="_Swh_oJMlEeaLL8vSmYjlJQ" association="_Xf21gJMlEeaLL8vSmYjlJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Xf3ckZMlEeaLL8vSmYjlJQ" name="remote control user" type="_OgZAIJMlEeaLL8vSmYjlJQ" association="_Xf21gJMlEeaLL8vSmYjlJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YftI8JMlEeaLL8vSmYjlJQ" memberEnd="_YftwApMlEeaLL8vSmYjlJQ _YftwA5MlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YftwAJMlEeaLL8vSmYjlJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YftwAZMlEeaLL8vSmYjlJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YftwApMlEeaLL8vSmYjlJQ" name="create function" type="_T6USMJMlEeaLL8vSmYjlJQ" association="_YftI8JMlEeaLL8vSmYjlJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YftwA5MlEeaLL8vSmYjlJQ" name="autonomous function user" type="_QoiYYJMlEeaLL8vSmYjlJQ" association="_YftI8JMlEeaLL8vSmYjlJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZUW5AJMlEeaLL8vSmYjlJQ" memberEnd="_ZUXgEpMlEeaLL8vSmYjlJQ _ZUXgE5MlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZUXgEJMlEeaLL8vSmYjlJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZUXgEZMlEeaLL8vSmYjlJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ZUXgEpMlEeaLL8vSmYjlJQ" name="execute function" type="_VKFQ8JMlEeaLL8vSmYjlJQ" association="_ZUW5AJMlEeaLL8vSmYjlJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ZUXgE5MlEeaLL8vSmYjlJQ" name="autonomous function user" type="_QoiYYJMlEeaLL8vSmYjlJQ" association="_ZUW5AJMlEeaLL8vSmYjlJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_iM9RYJMlEeaLL8vSmYjlJQ" name="Move Item">
+    <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_Josb8JMmEeaLL8vSmYjlJQ" name="Low Power"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pRY9cJMlEeaLL8vSmYjlJQ" memberEnd="_pRZkgpMlEeaLL8vSmYjlJQ _pRZkg5MlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pRZkgJMlEeaLL8vSmYjlJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pRZkgZMlEeaLL8vSmYjlJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pRZkgpMlEeaLL8vSmYjlJQ" name="move item" type="_iM9RYJMlEeaLL8vSmYjlJQ" association="_pRY9cJMlEeaLL8vSmYjlJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pRZkg5MlEeaLL8vSmYjlJQ" name="autonomous function user" type="_QoiYYJMlEeaLL8vSmYjlJQ" association="_pRY9cJMlEeaLL8vSmYjlJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_sZDR8JMlEeaLL8vSmYjlJQ" name="Charge">
+    <extend xmi:type="uml:Extend" xmi:id="_0wQNcJMlEeaLL8vSmYjlJQ" extendedCase="_Swh_oJMlEeaLL8vSmYjlJQ" extensionLocation="_0wSCoJMlEeaLL8vSmYjlJQ"/>
+    <extend xmi:type="uml:Extend" xmi:id="_B2qDAJMmEeaLL8vSmYjlJQ" extendedCase="_T6USMJMlEeaLL8vSmYjlJQ" extensionLocation="_B2qqEJMmEeaLL8vSmYjlJQ"/>
+    <extend xmi:type="uml:Extend" xmi:id="_I83QsJMmEeaLL8vSmYjlJQ" extendedCase="_VKFQ8JMlEeaLL8vSmYjlJQ" extensionLocation="_I83QsZMmEeaLL8vSmYjlJQ"/>
+    <extend xmi:type="uml:Extend" xmi:id="_Jor04JMmEeaLL8vSmYjlJQ" extendedCase="_iM9RYJMlEeaLL8vSmYjlJQ" extensionLocation="_Josb8JMmEeaLL8vSmYjlJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_wR1hYJMlEeaLL8vSmYjlJQ" name="Charging Station"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_yp6zEJMlEeaLL8vSmYjlJQ" memberEnd="_yp7aIJMlEeaLL8vSmYjlJQ _yp7aIZMlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yp6zEZMlEeaLL8vSmYjlJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yp6zEpMlEeaLL8vSmYjlJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_yp7aIJMlEeaLL8vSmYjlJQ" name="charge" type="_sZDR8JMlEeaLL8vSmYjlJQ" association="_yp6zEJMlEeaLL8vSmYjlJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_yp7aIZMlEeaLL8vSmYjlJQ" name="charging station" type="_wR1hYJMlEeaLL8vSmYjlJQ" association="_yp6zEJMlEeaLL8vSmYjlJQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_-rH1oJcLEeay2cJPAzKhuA" name="Operate Actuators"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_C10UcJcMEeay2cJPAzKhuA" memberEnd="_C13-0JcMEeay2cJPAzKhuA _C13-0ZcMEeay2cJPAzKhuA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_C12JoJcMEeay2cJPAzKhuA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_C12wsJcMEeay2cJPAzKhuA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_C13-0JcMEeay2cJPAzKhuA" name="operate actuators" type="_-rH1oJcLEeay2cJPAzKhuA" association="_C10UcJcMEeay2cJPAzKhuA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_C13-0ZcMEeay2cJPAzKhuA" name="remote control user" type="_OgZAIJMlEeaLL8vSmYjlJQ" association="_C10UcJcMEeay2cJPAzKhuA"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_KQq3YJMlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KQq3YZMlEeaLL8vSmYjlJQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_KSv7AJMlEeaLL8vSmYjlJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KSv7AZMlEeaLL8vSmYjlJQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>
