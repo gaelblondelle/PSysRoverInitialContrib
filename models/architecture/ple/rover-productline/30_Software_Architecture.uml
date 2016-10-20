@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FtfuIJLYEeaaqdRRN-YoCg" name="Software Architecture">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_FxI4AJLYEeaaqdRRN-YoCg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_FxQMwJLYEeaaqdRRN-YoCg">
+    <importedPackage xmi:type="uml:Package" href="pathmap://SysML14_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_h2-dIJLfEeaaqdRRN-YoCg" name="Logical View">
+    <packagedElement xmi:type="uml:Component" xmi:id="_7N6bIJMqEeaLL8vSmYjlJQ" name="DriveControl">
+      <packagedElement xmi:type="uml:Usage" xmi:id="_kNxq4JMrEeaLL8vSmYjlJQ" client="_7N6bIJMqEeaLL8vSmYjlJQ" supplier="_f28NgJMrEeaLL8vSmYjlJQ"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_GaOQoJMtEeaLL8vSmYjlJQ" client="_7N6bIJMqEeaLL8vSmYjlJQ" supplier="_-O2xsJMsEeaLL8vSmYjlJQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_GngwoJMrEeaLL8vSmYjlJQ" name="Drive Command Database">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_jSThIJMrEeaLL8vSmYjlJQ" client="_GngwoJMrEeaLL8vSmYjlJQ" supplier="_f28NgJMrEeaLL8vSmYjlJQ" contract="_f28NgJMrEeaLL8vSmYjlJQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_ISSQYJMrEeaLL8vSmYjlJQ" name="Execution Engine">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_ER1AwJMtEeaLL8vSmYjlJQ" client="_ISSQYJMrEeaLL8vSmYjlJQ" supplier="_-O2xsJMsEeaLL8vSmYjlJQ" contract="_-O2xsJMsEeaLL8vSmYjlJQ"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_x5G9AJMsEeaLL8vSmYjlJQ" client="_ISSQYJMrEeaLL8vSmYjlJQ">
+        <supplier xmi:type="uml:Interface" href="20_System_Architecture.uml#_OYgyUJMsEeaLL8vSmYjlJQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_f28NgJMrEeaLL8vSmYjlJQ" name="Drive Command Library"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_-O2xsJMsEeaLL8vSmYjlJQ" name="Run Command"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_SJ7mwJMyEeaLL8vSmYjlJQ" name="Deployment View">
+    <packagedElement xmi:type="uml:Node" xmi:id="_Zi1uAJMyEeaLL8vSmYjlJQ" name="ECU">
+      <deployment xmi:type="uml:Deployment" xmi:id="_LOpaMJMzEeaLL8vSmYjlJQ" client="_Zi1uAJMyEeaLL8vSmYjlJQ" supplier="_7tEisJMyEeaLL8vSmYjlJQ" deployedArtifact="_7tEisJMyEeaLL8vSmYjlJQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DeploymentSpecification" xmi:id="_M35P8JMzEeaLL8vSmYjlJQ" name="ex_eng spec" deploymentLocation=""/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_lVW50JMyEeaLL8vSmYjlJQ" name="Realization View">
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_4J-PYJMyEeaLL8vSmYjlJQ" name="ex_eng.c">
+      <manifestation xmi:type="uml:Manifestation" xmi:id="_A1ktkJMzEeaLL8vSmYjlJQ" client="_4J-PYJMyEeaLL8vSmYjlJQ" supplier="_ISSQYJMrEeaLL8vSmYjlJQ" utilizedElement="_ISSQYJMrEeaLL8vSmYjlJQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_7tEisJMyEeaLL8vSmYjlJQ" name="ex_eng.so">
+      <manifestation xmi:type="uml:Manifestation" xmi:id="__bEecJMyEeaLL8vSmYjlJQ" client="_7tEisJMyEeaLL8vSmYjlJQ" supplier="_ISSQYJMrEeaLL8vSmYjlJQ" utilizedElement="_ISSQYJMrEeaLL8vSmYjlJQ"/>
+    </packagedElement>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FuaUIJLYEeaaqdRRN-YoCg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Fua7MJLYEeaaqdRRN-YoCg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FxHp4JLYEeaaqdRRN-YoCg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FxIQ8JLYEeaaqdRRN-YoCg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>
