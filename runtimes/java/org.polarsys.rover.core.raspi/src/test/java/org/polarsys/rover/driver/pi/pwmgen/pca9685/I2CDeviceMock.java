@@ -114,4 +114,19 @@ public class I2CDeviceMock implements I2CDevice {
 
 		return value;
 	}
+
+	@Override
+	public int getAddress() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void write(byte[] arg0) throws IOException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void write(int arg0, byte[] arg1) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 }

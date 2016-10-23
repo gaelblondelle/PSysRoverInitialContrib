@@ -31,6 +31,7 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
+import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 
 /**
  * 
@@ -89,7 +90,11 @@ public class PiServer extends AbstractServer {
 	@Override
 	protected IRoverController createController() throws IOException {
 
-		bus = I2CFactory.getInstance(I2CBus.BUS_1);
+		try {
+			bus = I2CFactory.getInstance(I2CBus.BUS_1);
+		} catch (UnsupportedBusNumberException e) {
+			throw new IOException(e);
+		}
 
 		I2CDevice device = bus.getDevice(PCA9685_I2C_ADDRESS);
 		pwmGenerator = new PCA9685PWMGenerator(device);

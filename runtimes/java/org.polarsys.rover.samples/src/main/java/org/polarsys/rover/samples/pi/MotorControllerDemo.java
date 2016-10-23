@@ -16,6 +16,7 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
+import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 
 /**
  * This application demonstrates the use of two {@link MotorControllerImpl} with a PCA9685 PWM generator to control the
@@ -56,7 +57,13 @@ public class MotorControllerDemo {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_1);
+		I2CBus bus;
+		try {
+			bus = I2CFactory.getInstance(I2CBus.BUS_1);
+		} catch (UnsupportedBusNumberException e) {
+			throw new IOException(e);
+		}
+
 		final GpioController gpio = GpioFactory.getInstance();
 
 		PCA9685PWMGenerator driver = null;

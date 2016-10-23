@@ -11,6 +11,7 @@ import org.polarsys.rover.driver.servo.IServoControllerConfiguration;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
+import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 
 /**
  * This application demonstrates the use of {@link ServoControllerImpl}s with a PCA9685 PWM generator. See the constants
@@ -35,7 +36,12 @@ public class ServoDemo {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_1);
+		I2CBus bus;
+		try {
+			bus = I2CFactory.getInstance(I2CBus.BUS_1);
+		} catch (UnsupportedBusNumberException e) {
+			throw new IOException(e);
+		}
 		PCA9685PWMGenerator driver = null;
 
 		try {
