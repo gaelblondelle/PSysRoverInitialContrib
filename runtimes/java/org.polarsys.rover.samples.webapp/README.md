@@ -27,7 +27,7 @@ Copy the rover-samples-webapp-<version>-jar-with-dependencies.jar file to your r
 
 Run the application as root (required to access the IO ports) using the command
 
-	sudo java -jar rover-samples-webapp-<version>-jar-with-dependencies.jar
+	sudo java -Drover.cfg=/home/pi/rover.properties -jar rover-samples-webapp-<version>-jar-with-dependencies.jar
 	
 This will start a Jetty HTTP server on Port 8000 that can be accessed from a HTML5 capable browser using the URL http://<ip-of-your-raspi>:8000. You can then control your rover using the buttons on that website. You may also adapt the rover.properties file while the application is running. The configuration is automatically reloaded every 5 seconds.
 
