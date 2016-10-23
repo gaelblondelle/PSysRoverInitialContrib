@@ -55,22 +55,22 @@ public class ServoDemo {
 			IServoController controller = new ServoControllerImpl(output, new IServoControllerConfiguration() {
 
 				@Override
-				public boolean isReversed() {
+				public boolean reversed() {
 					return false;
 				}
 
 				@Override
-				public int getPositiveRate() {
+				public int positiveRate() {
 					return 100;
 				}
 
 				@Override
-				public int getOffset() {
+				public int offset() {
 					return 0;
 				}
 
 				@Override
-				public int getNegativeRate() {
+				public int negativeRate() {
 					return 100;
 				}
 			});

@@ -66,12 +66,12 @@ public class ServoControllerImpl implements IServoController {
 			throw new IllegalArgumentException("Invalid position " + position);
 		}
 
-		int rate = position < 0 ? configuration.getNegativeRate() : configuration.getPositiveRate();
+		int rate = position < 0 ? configuration.negativeRate() : configuration.positiveRate();
 		int adaptedPosition = (position * rate) / 100;
 
-		adaptedPosition += configuration.getOffset();
+		adaptedPosition += configuration.offset();
 
-		if (configuration.isReversed()) {
+		if (configuration.reversed()) {
 			adaptedPosition *= -1;
 		}
 

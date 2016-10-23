@@ -13,14 +13,14 @@ public interface IServoControllerConfiguration {
 	 * 
 	 * @return
 	 */
-	boolean isReversed();
+	boolean reversed();
 
 	/**
 	 * The offset of the zero position from the servo's hardware neutral position.
 	 * 
 	 * @return
 	 */
-	int getOffset();
+	int offset();
 
 	/**
 	 * A scale factor in percent for the angle to which a positive position (set via
@@ -29,7 +29,7 @@ public interface IServoControllerConfiguration {
 	 * 
 	 * @return
 	 */
-	int getPositiveRate();
+	int positiveRate();
 
 	/**
 	 * A scale factor in percent for the angle to which a negative position (set via
@@ -38,6 +38,6 @@ public interface IServoControllerConfiguration {
 	 * 
 	 * @return
 	 */
-	int getNegativeRate();
+	int negativeRate();
 
 }

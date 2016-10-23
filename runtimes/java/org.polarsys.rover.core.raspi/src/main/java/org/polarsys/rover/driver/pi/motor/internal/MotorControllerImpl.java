@@ -31,7 +31,7 @@ public class MotorControllerImpl implements IMotorController {
 
 	@Override
 	public void setSpeed(int speed) throws IOException {
-		directionPin.setState(speed < 0 ^ configuration.isReversed() ? PinState.LOW : PinState.HIGH);
+		directionPin.setState(speed < 0 ^ configuration.reversed() ? PinState.LOW : PinState.HIGH);
 		int pwm = (output.getCycleCount() * Math.abs(speed)) / SPEED_MAX_FORWARD;
 		output.setPWM(pwm);
 	}

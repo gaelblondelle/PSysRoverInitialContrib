@@ -112,7 +112,7 @@ public class PiServer extends AbstractServer {
 		directionPinRight.setShutdownOptions(true, PinState.LOW);
 
 		ConfigurationSource source = new FilesConfigurationSource(
-				() -> Collections.singletonList(Paths.get("rover.properties")));
+				() -> Collections.singletonList(Paths.get(System.getProperty("rover.cfg", "rover.properties"))));
 
 		ConfigurationProvider provider = new ConfigurationProviderBuilder().withConfigurationSource(source)
 				.withReloadStrategy(new PeriodicalReloadStrategy(5, TimeUnit.SECONDS)).build();

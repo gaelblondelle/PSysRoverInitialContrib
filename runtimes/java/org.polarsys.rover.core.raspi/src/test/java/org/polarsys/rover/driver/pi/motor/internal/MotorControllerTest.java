@@ -42,7 +42,7 @@ public class MotorControllerTest {
 
 	@Test
 	public void testSetSpeedStop() throws IOException {
-		when(configuration.isReversed()).thenReturn(false);
+		when(configuration.reversed()).thenReturn(false);
 
 		motorController.setSpeed(IMotorController.SPEED_STOP);
 
@@ -52,7 +52,7 @@ public class MotorControllerTest {
 
 	@Test
 	public void testSetSpeedMaxForward() throws IOException {
-		when(configuration.isReversed()).thenReturn(false);
+		when(configuration.reversed()).thenReturn(false);
 
 		motorController.setSpeed(IMotorController.SPEED_MAX_FORWARD);
 
@@ -62,7 +62,7 @@ public class MotorControllerTest {
 
 	@Test
 	public void testSetSpeedMaxBackward() throws IOException {
-		when(configuration.isReversed()).thenReturn(false);
+		when(configuration.reversed()).thenReturn(false);
 
 		motorController.setSpeed(IMotorController.SPEED_MAX_BACKWARD);
 
@@ -72,7 +72,7 @@ public class MotorControllerTest {
 
 	@Test
 	public void testSetSpeedStopReversed() throws IOException {
-		when(configuration.isReversed()).thenReturn(true);
+		when(configuration.reversed()).thenReturn(true);
 
 		motorController.setSpeed(IMotorController.SPEED_STOP);
 
@@ -82,7 +82,7 @@ public class MotorControllerTest {
 
 	@Test
 	public void testSetSpeedMaxForwardReversed() throws IOException {
-		when(configuration.isReversed()).thenReturn(true);
+		when(configuration.reversed()).thenReturn(true);
 
 		motorController.setSpeed(IMotorController.SPEED_MAX_FORWARD);
 
@@ -92,7 +92,7 @@ public class MotorControllerTest {
 
 	@Test
 	public void testSetSpeedMaxBackwardReversed() throws IOException {
-		when(configuration.isReversed()).thenReturn(true);
+		when(configuration.reversed()).thenReturn(true);
 
 		motorController.setSpeed(IMotorController.SPEED_MAX_BACKWARD);
 

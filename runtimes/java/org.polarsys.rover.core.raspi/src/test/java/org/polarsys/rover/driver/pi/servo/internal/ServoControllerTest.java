@@ -39,10 +39,10 @@ public class ServoControllerTest {
 	}
 
 	private void setConfig(boolean reversed, int offset, int posRate, int negRate) {
-		when(configuration.isReversed()).thenReturn(reversed);
-		when(configuration.getOffset()).thenReturn(offset);
-		when(configuration.getPositiveRate()).thenReturn(posRate);
-		when(configuration.getNegativeRate()).thenReturn(negRate);
+		when(configuration.reversed()).thenReturn(reversed);
+		when(configuration.offset()).thenReturn(offset);
+		when(configuration.positiveRate()).thenReturn(posRate);
+		when(configuration.negativeRate()).thenReturn(negRate);
 	}
 
 	@Test

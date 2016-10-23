@@ -88,14 +88,14 @@ public class MotorControllerDemo {
 			leftMotor = new MotorControllerImpl(driver.getOutput(LEFT_MOTOR_PWM_OUTPUT), directionPinLeft,
 					new IMotorControllerConfiguration() {
 						@Override
-						public boolean isReversed() {
+						public boolean reversed() {
 							return false;
 						}
 					});
 			rightMotor = new MotorControllerImpl(driver.getOutput(RIGHT_MOTOR_PWM_OUTPUT), directionPinRight,
 					new IMotorControllerConfiguration() {
 						@Override
-						public boolean isReversed() {
+						public boolean reversed() {
 							return false;
 						}
 					});

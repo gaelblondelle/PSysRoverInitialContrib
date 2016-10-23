@@ -13,6 +13,6 @@ public interface IMotorControllerConfiguration {
 	 * 
 	 * @return
 	 */
-	boolean isReversed();
+	boolean reversed();
 
 }
