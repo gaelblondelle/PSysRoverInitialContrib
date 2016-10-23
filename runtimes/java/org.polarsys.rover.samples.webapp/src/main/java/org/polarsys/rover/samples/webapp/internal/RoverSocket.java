@@ -76,7 +76,7 @@ public class RoverSocket extends JsonRpcSocket {
 	 * e.g., a tracked vehicle is not able to achieve its maximum speed if the turn rate is non-zero.
 	 *
 	 * @param turnRate
-	 *            The turn rate. Allowed rage is -1000 to 1000. A value of 1000 means maximum turn rate clockwise. A
+	 *            The turn rate. Allowed range is -1000 to 1000. A value of 1000 means maximum turn rate clockwise. A
 	 *            value of -1000 means maximum turn rate counter-clockwise. A value of 0 means no turning.
 	 * @throws IOException
 	 */
@@ -91,15 +91,14 @@ public class RoverSocket extends JsonRpcSocket {
 	 * Set the pan angle of a camera.
 	 * 
 	 * @param panAngle
-	 *            The desired angle measured in arc seconds. A positive value means an angle in clockwise direction.
+	 *            The desired angle. Allowed range is -1000 to 1000. A positive value means an angle in clockwise direction.
 	 * @throws IOException
 	 */
 	public void setPan(Number panAngle) throws IOException {
 		final int panAngleValue = panAngle.intValue();
 
-		LOG.trace("Set pan to {}", panAngleValue);
+		LOG.trace("Set pan to {} %", panAngleValue / 10);
 
-		// TODO Convert acrsecs -> servo value
 		controller.setPan(panAngleValue);
 	}
 
@@ -107,15 +106,14 @@ public class RoverSocket extends JsonRpcSocket {
 	 * Set the tilt angle of a camera.
 	 * 
 	 * @param tiltAngle
-	 *            The desired angle measured in arc seconds. A positive value means an angle upwards.
+	 *             The desired angle. Allowed range is -1000 to 1000. A positive value means an angle upwards.
 	 * @throws IOException
 	 */
 	public void setTilt(Number tiltAngle) throws IOException {
 		final int tiltAngleValue = tiltAngle.intValue();
 
-		LOG.trace("Set tilt to {}", tiltAngleValue);
+		LOG.trace("Set tilt to {} %", tiltAngleValue / 10);
 
-		// TODO Convert acrsecs -> servo value
 		controller.setTilt(tiltAngleValue);
 	}
 

@@ -61,33 +61,6 @@
 		};
 	}
 
-	function takeSnapshot() {
-		var request = JSON.stringify({
-			jsonrpc : "2.0",
-			id : messageId++,
-			method : "takeSnapshot",
-			params : [ 0 ]
-		});
-
-		connection.send(request);
-	}
-
-	function openVideoStream() {
-		var request = JSON.stringify({
-			jsonrpc : "2.0",
-			id : messageId++,
-			method : "openVideoStream",
-			params : [ 0 ]
-		});
-
-		connection.send(request);
-
-		document.getElementById("videosrc").src = "http://" + location.hostname
-				+ ":8001";
-		document.getElementById("video").play();
-
-	}
-
 	function stop() {
 		var request = JSON.stringify({
 			jsonrpc : "2.0",
@@ -125,7 +98,7 @@
 			jsonrpc : "2.0",
 			id : messageId++,
 			method : "setPan",
-			params : [ 0, pan ]
+			params : [ pan ]
 		});
 
 		connection.send(request);
@@ -136,47 +109,47 @@
 			jsonrpc : "2.0",
 			id : messageId++,
 			method : "setTilt",
-			params : [ 0, tilt ]
+			params : [ tilt ]
 		});
 
 		connection.send(request);
 	}
 
 	function down() {
-		tilt = tilt - 36000;
+		tilt = tilt - 50;
 
-		if (tilt < -324000) {
-			tilt = -324000;
+		if (tilt < -1000) {
+			tilt = -1000;
 		}
 
 		setTilt(tilt);
 	}
 
 	function up() {
-		tilt = tilt + 36000;
+		tilt = tilt + 50;
 
-		if (tilt > 324000) {
-			tilt = 324000;
+		if (tilt > 1000) {
+			tilt = 1000;
 		}
 
 		setTilt(tilt);
 	}
 
 	function clockwise() {
-		pan = pan + 36000;
+		pan = pan + 50;
 
-		if (pan > 324000) {
-			pan = 324000;
+		if (pan > 1000) {
+			pan = 1000;
 		}
 
 		setPan(pan);
 	}
 
 	function counterClockwise() {
-		pan = pan - 36000;
+		pan = pan - 50;
 
-		if (pan < -324000) {
-			pan = -324000;
+		if (pan < -1000) {
+			pan = -1000;
 		}
 
 		setPan(pan);
@@ -189,11 +162,6 @@
 		<div>
 			<button id="connect" name="connect" value="connect" onclick="init();">Connect</button>
 			<button id="stop" name="stop" value="stop" onclick="stop();">Stop</button>
-			<button id="takeSnapshot" name="takeSnapshot" value="takeSnapshot"
-				onclick="takeSnapshot();">Take snapshot</button>
-			<button id="openVideoStream" name="openVideoStream"
-				value="openVideoStream" onclick="openVideoStream();">Open
-				Video Stream</button>
 		</div>
 		<div>
 			<table>
@@ -226,12 +194,6 @@
 					<td colspan="2" align="center"><button onclick="down();">down</button></td>
 				</tr>
 			</table>
-		</div>
-
-		<div>
-			<video id="video" height="480" width="640">
-				<source id="videosrc" src="" type="video/mp4"/>
-			</video>
 		</div>
 	</article>
 </body>
