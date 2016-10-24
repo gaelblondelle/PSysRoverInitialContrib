@@ -1,0 +1,29 @@
+
+Class[appliedStereotypes~=Feature]{
+	fontName:"Segoe UI";
+	fillColor:#EDC97A;
+	transparency:0.0;
+	gradient:#FFFFFF vertical;
+	lineColor:#000000;
+	elementIcon:false;
+	shadow:false
+}
+
+Class[appliedStereotypes~=Feature] > Compartment {
+	visible: false;
+}
+
+
+Class[appliedStereotypes~=Variant]{
+	fontName:"Segoe UI";
+	fillColor:#FFCCFF;
+	transparency:0.0;
+	gradient:#FFFFFF vertical;
+	lineColor:#000000;
+	elementIcon:false;
+	shadow:false
+}
+
+Class[appliedStereotypes~=Variant] > Compartment {
+	visible: false;
+}

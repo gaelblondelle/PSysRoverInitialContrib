@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmlns:css="http://www.eclipse.org/papyrus/infra/gmfdiag/css" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <notation:Diagram xmi:id="_8MzaAJLiEeaaqdRRN-YoCg" type="PapyrusUMLClassDiagram" name="Overview" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_-QB2AJLiEeaaqdRRN-YoCg" type="Package_Shape" fillColor="12632256">
       <children xmi:type="notation:DecorationNode" xmi:id="_-QCdEJLiEeaaqdRRN-YoCg" type="Package_NameLabel"/>
@@ -2899,4 +2899,7 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_M5EiaJM4EeaLL8vSmYjlJQ"/>
     </edges>
   </notation:Diagram>
+  <css:ModelStyleSheets xmi:id="_gTLBgJoFEeaU866PRejKlg">
+    <stylesheets xmi:type="css:StyleSheetReference" xmi:id="_gTLokJoFEeaU866PRejKlg" path="/rover.productline/css/ple.css"/>
+  </css:ModelStyleSheets>
 </xmi:XMI>
