@@ -1,0 +1,418 @@
+[[first-contact-with-the-raspberry-pi]]
+First contact with the Raspberry Pi
+-----------------------------------
+
+[[install-wiring-pi]]
+Install Wiring Pi
+~~~~~~~~~~~~~~~~~
+
+You should start by installing the WiringPi library because we will need
+it for the Rover, and it makes it easy to perform some initial tests.
+
+Read the http://wiringpi.com/download-and-install/[install wriringPi]
+documentation on the Wiring Pi website.
+
+On the Raspberry Pi, type
+
+....
+> git clone git://git.drogon.net/wiringPi
+> cd wiringPi
+> ./build
+....
+
+Check install wit the command
+
+....
+> gpio readall
+....
+
+[[the-raspberry-pi-hello-world]]
+The Raspberry Pi Hello World
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section, we set a LED on thanks to Wiring Pi We will use the LED
+later with the project
+
+Connect a led and test it. (see the config part of the
+http://iot.eclipse.org/java/tutorial/[greenhouse tutorial])
+
+With a Grove LED and a pin Female Jumper to Grove 4 pin Conversion
+Cable, connect: 
+* BLACK wire goes on PIN#14 
+* RED wire goes on PIN#02 
+* YELLOW wire goes on PIN#11 
+* The WHITE wire is not used in the case of the LED – you only really need one pin to toggle a LED on or off, right? :-) – so you can leave it dangling or connect it to a Ground pin header.
+
+....
+> ssh pi@192.168.2.3
+> gpio mode 0 out 
+# gpio #0 corresponds to pin #11
+> gpio write 0 1
+# Your led should be on
+> gpio write 0 0
+# Your led should be off
+....
+
+[[setup-raspberry-pi-as-a-wifi-access-point]]
+Setup Raspberry Pi as a wifi access point
+-----------------------------------------
+
+See this
+https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/[tuto]
+about how to setup the Raspberry Pi 3 as a wifi access point.
+
+Install hostapd (to manage the access point) and dnsmasq (to offer dhcp
+to clients)
+
+....
+> sudo apt-get install hostapd dnsmasq
+....
+
+Update dhcpd config to ignore wlan0
+
+....
+> sudo nano /etc/dhcpcd.conf
+....
+
+and add the following line to the bottom of the file:
+
+....
+denyinterfaces wlan0  
+....
+
+Configure your wifi static IP address
+
+....
+> sudo nano /etc/network/interfaces 
+....
+
+and edit the wlan0 section
+
+....
+allow-hotplug wlan0  
+iface wlan0 inet static  
+    address 192.168.168.1
+    netmask 255.255.255.0
+    network 192.168.168.0
+    broadcast 192.168.168.255
+....
+
+Restart dhcpd and wlan0
+
+....
+> sudo service dhcpcd restart
+> sudo ifdown wlan0
+> sudo ifup wlan0
+    
+....
+
+Configure HostAPD
+
+....
+> sudo nano /etc/hostapd/hostapd.conf
+....
+
+with the following content (see the
+https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf[hotsapd.conf
+documentation] for more information):
+
+....
+# This is the name of the WiFi interface we configured above
+interface=wlan0
+
+# Use the nl80211 driver with the brcmfmac driver
+driver=nl80211
+
+# This is the name of the network
+ssid=PolarSysRover_AddYouInitialsHere
+
+# Use the 2.4GHz band
+hw_mode=g
+
+# Use channel 0
+channel=0
+
+# Enable 802.11n
+ieee80211n=1
+
+# Accept all MAC addresses
+macaddr_acl=0
+
+# Use WPA authentication
+auth_algs=1
+
+# Require clients to know the network name
+ignore_broadcast_ssid=0
+
+# Use WPA2
+wpa=2
+
+# Use a pre-shared key
+wpa_key_mgmt=WPA-PSK
+
+# The network passphrase
+wpa_passphrase=polarsys
+
+# Use AES, instead of TKIP
+rsn_pairwise=CCMP
+....
+
+This configuration creates an access point called *PolarSysRover_AddYouInitialsHere* with a connection password *polarsys*
+
+Test the configuration with
+
+....
+> sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf
+....
+
+You can check from your computer that the SSID is broadcasted. Hit
+Ctrl+C to stop the process.
+
+Make sure that the hostapd script knows where his config file is
+located:
+
+....
+> sudo nano /etc/default/hostapd
+....
+
+Edit the line stating with #DAEMON_CONF="" to say
+
+....
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+....
+
+Now, let configure the DHCP server. Save the original config file and
+create a new one
+
+....
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
+sudo nano /etc/dnsmasq.conf  
+....
+
+Paste the following config in the new file:
+
+....
+# Use interface wlan0
+interface=wlan0
+
+# Explicitly specify the address to listen on
+listen-address=192.168.168.1
+
+# Bind to the interface to make sure we aren't sending things elsewhere
+bind-interfaces
+
+# Forward DNS requests to Google DNS
+server=8.8.8.8
+
+# Don't forward short names
+domain-needed
+
+# Never forward addresses in the non-routed address spaces.
+bogus-priv
+
+# Assign IP addresses between 192.168.168.2 and 192.168.168.40 with a 12 hour lease time
+dhcp-range=192.168.168.1,192.168.168.40,12h
+....
+
+Now, let's start the services
+
+....
+> sudo service hostapd start  
+> sudo service dnsmasq start  
+....
+
+http://www.welzels.de/blog/en/arm-cross-compiling-with-mac-os-x/[Setup
+cross compilation for mac-os-x]
+
+Copy wiringPi/wiringPi to the laptop.
+
+In CDT, add:
+
+* Configure cross compiler includes
+image:images/cross_compilation_includes.png[Configure cross compiler includes]
+* Configure project includes image:images/project_includes.png[Configure
+project includes]
+* Configure project libraries image:images/project_libraries.png[Project
+Libraries names] image:images/project_library_path.png[Project Libraries Path]
+
+On the Rpi, create the /home/pi/rover directory.
+
+....
+> cd ~
+> mkdir rover
+....
+
+Run configuration image:images/run_configuration.png[Run configuration] Sets
+the sticky bit to run the program as root. Necessary for wiringpi.
+
+Sample code:
+
+....
+#include <stdio.h>
+#include <stdlib.h>
+#include <wiringPi.h>
+
+// LED Pin - wiringPi pin 0 is BCM_GPIO 17.
+
+#define LED 0
+
+int main (void)
+{
+    printf ("Raspberry Pi blink\n") ;
+
+    wiringPiSetup () ;
+    pinMode (LED, OUTPUT) ;
+    int i;
+    for (i=0;i<10;i++)
+    {
+        digitalWrite (LED, HIGH) ;  // On
+        delay (500) ;       // mS
+        digitalWrite (LED, LOW) ;   // Off
+        delay (500) ;
+    }
+    return EXIT_SUCCESS;
+}
+....
+
+[[the-rover-shopping-list]]
+The rover shopping list
+-----------------------
+
+* http://www.dagurobot.com/goods.php?id=50[The rover platform]
+* http://www.dagurobot.com/goods.php?id=131[The rover controller board]
+* http://www.dagurobot.com/goods.php?id=94[The infrared sensor module]
+* http://www.dagurobot.com/goods.php?id=79[The sensor pan/tilt kit robot
+accessories]
+
+You need a charger that can be configured to provide XXVolts output
+
+Finding the right connectors between the batteries and the controller
+board is almost impossible. So I finaly soldered them.
+
+[[connect-to-the-rpi-with-an-eternet-cable]]
+Connect to the RPi with an Eternet cable
+----------------------------------------
+
+Connect the Rpi directy to your mac with an Ethernet Cable
+
+SysPref Sharing Share Internet
+
+Util:
+
+* http://ivanx.com/raspberrypi/[Pi Finder]
+
+[[keep-your-rpi-up-to-date]]
+Keep your Rpi up to date
+------------------------
+
+....
+sudo apt-get update
+sudo apt-get upgrade
+....
+
+Then take a coffe while all updates are being downloaded.
+
+[[install-opencv]]
+Install opencv
+--------------
+
+[[install-and-check-camera]]
+install and check camera
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+See
+https://thinkrpi.wordpress.com/2013/05/22/opencvpi-cam-step-1-install/
+have you rechecked all the PCB connections, including the one labelled
+Sunny on the camera PCB itself? raspistill -t 1000 -o test.jpg
+
+[[install-cmake]]
+Install CMake
+~~~~~~~~~~~~~
+
+....
+sudo apt-get update
+sudo apt-get install cmake
+....
+
+[[install-opencv-1]]
+Install OpenCV
+~~~~~~~~~~~~~~
+
+....
+sudo apt-get install libopencv-dev
+sudo apt-get install python-opencv
+....
+
+[[recompile-mmal...]]
+Recompile mmal...
+~~~~~~~~~~~~~~~~~
+
+see
+https://thinkrpi.wordpress.com/2013/05/22/opencvpi-cam-step-2-compilation/
+
+....
+mkdir opencv
+git clone https://github.com/raspberrypi/userland
+    
+sudo mkdir build
+cd build
+sudo cmake -DCMAKE_BUILD_TYPE=Release ..
+sudo make
+sudo make install
+....
+
+[[ttspeech]]
+TTSpeech
+~~~~~~~~
+
+see
+https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/speak-easier-flite
+
+....
+sudo apt-get install flite
+flite -t "I am the PolarSys rover. I am very happy to be visiting you  today!"
+....
+
+Volume up
+
+....
+amixer set PCM 100 
+....
+
+[[spi-config]]
+SPI config
+----------
+
+To better understand how the SPI configuration with works, read the
+following resources:
+
+* http://wiringpi.com/reference/spi-library/[WiringPi SPI interface] and
+link:[article to explain how it works]
+* http://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf[MCP3008
+datasheet]
+* http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/
+* http://pastebin.com/3d0FnhjG[Sample code to use the MCP3008 with
+wiringPi]
+* https://www.pololu.com/file/download/gp2y0a21yk0f.pdf?file_id=0J85[Sharp
+IR sensor datasheet]
+
+Warning: Sharp IR sensor needs a 5V in power in order to work well.
+
+[[i2c-config]]
+I2C config
+----------
+
+* https://www.seeedstudio.com/item_detail.html?p_id=1921[The Grove
+humidity and temperature sensor with I2C interface]
+* http://www.seeedstudio.com/wiki/Grove_-_Tempture%26Humidity_Sensor_(High-Accuracy_%26Mini)_v1.0[The
+sensor doc on Seedstudio wiki]
+* http://www.seeedstudio.com/wiki/images/3/30/TH02_SENSOR.pdf[TH02
+sensor datasheet]
+* http://wiringpi.com/reference/i2c-library/[Man page for the I2C wiring
+pi library]
+* https://projects.drogon.net/raspberry-pi/wiringpi/i2c-library/[I2C dev
+library explanations]
++
+sudo apt-get install libi2c-dev
++
+sudo apt-get install mosquitto
