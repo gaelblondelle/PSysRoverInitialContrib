@@ -1,0 +1,52 @@
+http://www.welzels.de/blog/en/arm-cross-compiling-with-mac-os-x/[Setup
+cross compilation for mac-os-x]
+
+Copy wiringPi/wiringPi to the laptop.
+
+In CDT, add:
+
+* Configure cross compiler includes
+image:images/cross_compilation_includes.png[Configure cross compiler includes]
+* Configure project includes image:images/project_includes.png[Configure
+project includes]
+* Configure project libraries image:images/project_libraries.png[Project
+Libraries names] image:images/project_library_path.png[Project Libraries Path]
+
+On the Rpi, create the /home/pi/rover directory.
+
+....
+> cd ~
+> mkdir rover
+....
+
+Run configuration image:images/run_configuration.png[Run configuration] Sets
+the sticky bit to run the program as root. Necessary for wiringpi.
+
+Sample code:
+
+....
+#include <stdio.h>
+#include <stdlib.h>
+#include <wiringPi.h>
+
+// LED Pin - wiringPi pin 0 is BCM_GPIO 17.
+
+#define LED 0
+
+int main (void)
+{
+    printf ("Raspberry Pi blink") ;
+
+    wiringPiSetup () ;
+    pinMode (LED, OUTPUT) ;
+    int i;
+    for (i=0;i<10;i++)
+    {
+        digitalWrite (LED, HIGH) ;  // On
+        delay (500) ;       // mS
+        digitalWrite (LED, LOW) ;   // Off
+        delay (500) ;
+    }
+    return EXIT_SUCCESS;
+}
+....
