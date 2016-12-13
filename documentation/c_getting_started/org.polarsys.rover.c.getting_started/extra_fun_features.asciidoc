@@ -1,0 +1,17 @@
+[[ttspeech]]
+TTSpeech
+~~~~~~~~
+
+see
+https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/speak-easier-flite
+
+....
+sudo apt-get install flite
+flite -t "I am the PolarSys rover. I am very happy to be visiting you  today!"
+....
+
+Volume up
+
+....
+amixer set PCM 100 
+....

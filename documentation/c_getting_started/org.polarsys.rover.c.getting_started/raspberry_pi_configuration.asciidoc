@@ -253,17 +253,17 @@ Check install wit the command
 
 == The Raspberry Pi Hello World
 
-In this section, we set a LED on thanks to Wiring Pi We will use the LED
-later with the project
+In this section, we set a LED on thanks to Wiring Pi. We will use the LED later in the project.
 
 Connect a led and test it. (see the config part of the
 http://iot.eclipse.org/java/tutorial/[greenhouse tutorial])
 
 With a Grove LED and a pin Female Jumper to Grove 4 pin Conversion
 Cable, connect: 
+
 * BLACK wire goes on PIN#14 
 * RED wire goes on PIN#02 
-* YELLOW wire goes on PIN#11 
+* YELLOW wire goes on PIN#11 (Pin numbered #17 on the PLOLU #2756 controler) 
 * The WHITE wire is not used in the case of the LED – you only really need one pin to toggle a LED on or off, right? :-) – so you can leave it dangling or connect it to a Ground pin header.
 
 ....
@@ -275,3 +275,5 @@ Cable, connect:
 > gpio write 0 0
 # Your led should be off
 ....
+
+_If the LED does not turn on, check if your LED is adjustable and eventually adjust the light and polarity with a screw driver._

@@ -1,0 +1,13 @@
+== Troubleshooting
+
+=== Check connector soldering
+Onces Wiring Pi is installed, you can use the following features to check a pin is correctly soldered:
+
+...
+> ssh pi@192.168.2.3
+> gpio mode 0 out
+# gpio #0 corresponds to physical pin #17. Check that with gpio readall
+> gpio write 0 1
+# The pin should be up
+> gpio write 0 0
+# The pin should be down 

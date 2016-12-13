@@ -1,0 +1,48 @@
+[[install-opencv]]
+Install opencv
+--------------
+
+[[install-and-check-camera]]
+install and check camera
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+See
+https://thinkrpi.wordpress.com/2013/05/22/opencvpi-cam-step-1-install/
+have you rechecked all the PCB connections, including the one labelled
+Sunny on the camera PCB itself? raspistill -t 1000 -o test.jpg
+
+[[install-cmake]]
+Install CMake
+~~~~~~~~~~~~~
+
+....
+sudo apt-get update
+sudo apt-get install cmake
+....
+
+[[install-opencv-1]]
+Install OpenCV
+~~~~~~~~~~~~~~
+
+....
+sudo apt-get install libopencv-dev
+sudo apt-get install python-opencv
+....
+
+[[recompile-mmal...]]
+Recompile mmal...
+~~~~~~~~~~~~~~~~~
+
+see
+https://thinkrpi.wordpress.com/2013/05/22/opencvpi-cam-step-2-compilation/
+
+....
+mkdir opencv
+git clone https://github.com/raspberrypi/userland
+    
+sudo mkdir build
+cd build
+sudo cmake -DCMAKE_BUILD_TYPE=Release ..
+sudo make
+sudo make install
+....

@@ -1,128 +1,16 @@
 = Basic Rover Getting Started
 // Generate html doc with asciidoctor polarsys_c_rover_for_dummies.asciidoc
 
-include::raspbnerry_pi_configuration.asciidoc[]
+The detailed description of the Rover5 BOM used in this tutorial is available on https://wiki.polarsys.org/Rover5_BOM[this page] of the PolarSys Rover project wiki.
 
-include::setup_cdt_cross_compilation_raspberry.asciidoc[]
+include::raspberry_pi_configuration.asciidoc[]
 
+include::setup_tool_chain.asciidoc[]
 
-[[the-rover-shopping-list]]
-The rover shopping list
------------------------
+include::add_sensors.asciidoc[]
 
-* http://www.dagurobot.com/goods.php?id=50[The rover platform]
-* http://www.dagurobot.com/goods.php?id=131[The rover controller board]
-* http://www.dagurobot.com/goods.php?id=94[The infrared sensor module]
-* http://www.dagurobot.com/goods.php?id=79[The sensor pan/tilt kit robot
-accessories]
+include::extra_fun_features.asciidoc
 
-You need a charger that can be configured to provide XXVolts output
+include::install_opencv.asciidoc[]
 
-Finding the right connectors between the batteries and the controller
-board is almost impossible. So I finaly soldered them.
-
-
-[[install-opencv]]
-Install opencv
---------------
-
-[[install-and-check-camera]]
-install and check camera
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-See
-https://thinkrpi.wordpress.com/2013/05/22/opencvpi-cam-step-1-install/
-have you rechecked all the PCB connections, including the one labelled
-Sunny on the camera PCB itself? raspistill -t 1000 -o test.jpg
-
-[[install-cmake]]
-Install CMake
-~~~~~~~~~~~~~
-
-....
-sudo apt-get update
-sudo apt-get install cmake
-....
-
-[[install-opencv-1]]
-Install OpenCV
-~~~~~~~~~~~~~~
-
-....
-sudo apt-get install libopencv-dev
-sudo apt-get install python-opencv
-....
-
-[[recompile-mmal...]]
-Recompile mmal...
-~~~~~~~~~~~~~~~~~
-
-see
-https://thinkrpi.wordpress.com/2013/05/22/opencvpi-cam-step-2-compilation/
-
-....
-mkdir opencv
-git clone https://github.com/raspberrypi/userland
-    
-sudo mkdir build
-cd build
-sudo cmake -DCMAKE_BUILD_TYPE=Release ..
-sudo make
-sudo make install
-....
-
-[[ttspeech]]
-TTSpeech
-~~~~~~~~
-
-see
-https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/speak-easier-flite
-
-....
-sudo apt-get install flite
-flite -t "I am the PolarSys rover. I am very happy to be visiting you  today!"
-....
-
-Volume up
-
-....
-amixer set PCM 100 
-....
-
-[[spi-config]]
-SPI config
-----------
-
-To better understand how the SPI configuration with works, read the
-following resources:
-
-* http://wiringpi.com/reference/spi-library/[WiringPi SPI interface] and
-link:[article to explain how it works]
-* http://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf[MCP3008
-datasheet]
-* http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/
-* http://pastebin.com/3d0FnhjG[Sample code to use the MCP3008 with
-wiringPi]
-* https://www.pololu.com/file/download/gp2y0a21yk0f.pdf?file_id=0J85[Sharp
-IR sensor datasheet]
-
-Warning: Sharp IR sensor needs a 5V in power in order to work well.
-
-[[i2c-config]]
-I2C config
-----------
-
-* https://www.seeedstudio.com/item_detail.html?p_id=1921[The Grove
-humidity and temperature sensor with I2C interface]
-* http://www.seeedstudio.com/wiki/Grove_-_Tempture%26Humidity_Sensor_(High-Accuracy_%26Mini)_v1.0[The
-sensor doc on Seedstudio wiki]
-* http://www.seeedstudio.com/wiki/images/3/30/TH02_SENSOR.pdf[TH02
-sensor datasheet]
-* http://wiringpi.com/reference/i2c-library/[Man page for the I2C wiring
-pi library]
-* https://projects.drogon.net/raspberry-pi/wiringpi/i2c-library/[I2C dev
-library explanations]
-+
-sudo apt-get install libi2c-dev
-+
-sudo apt-get install mosquitto
+include::trouble_shooting.asciidoc[]
