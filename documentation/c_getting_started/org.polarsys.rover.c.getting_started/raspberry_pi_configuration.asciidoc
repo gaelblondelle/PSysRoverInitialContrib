@@ -277,3 +277,23 @@ Cable, connect:
 ....
 
 _If the LED does not turn on, check if your LED is adjustable and eventually adjust the light and polarity with a screw driver._
+
+== Enable distant connection for root
+
+Disclaimer: Of course, that's not a good practice in terms of security. But WiringPi library needs to be "root" in order to interact with GPIOs. So the easiest way is just to enable root login so that your Eclipse can remotely log as root.
+
+First step: add a password for the root account. I select "raspberry" which is also the default password for the "pi" account. While logged as "pi", just enter:
+
+ sudo passwd root
+
+Update the SSH configuration:
+
+ sudo nano /etc/ssh/sshd_config
+
+Find the line "PermitRootLogin without-password" and edit it to:
+ 
+ PermitRootLogin yes
+ 
+Restart sshd using:
+
+ /etc/init.d/ssh restart
