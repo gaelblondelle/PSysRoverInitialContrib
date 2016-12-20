@@ -294,6 +294,6 @@ Find the line "PermitRootLogin without-password" and edit it to:
  
  PermitRootLogin yes
  
-Restart sshd using:
+Reboot you pi, or restart sshd using:
 
  /etc/init.d/ssh restart
