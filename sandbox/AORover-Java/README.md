@@ -13,7 +13,7 @@ This folder contains sample code written in Java for the Eclipse Rover. Please s
 * LED on GPIO 17
 
 ### Wiring diagram ###
-![aorover.png](https://bitbucket.org/repo/MjqRde/images/4231134720-aorover.png)
+![wiring diagram](./aorover.png)
 
 ## Software Requirements ##
 
@@ -115,7 +115,7 @@ Calibration method:
 * plot the (x,y) values read from the sensor. you will get an ellipse that is probably not centered at (0,0)
 * shift the values so that the ellipse is centered at (0,0) and scale them to get a circle: these are your offset and scaling values for the compass!
 
-![c1.png](https://bitbucket.org/repo/MjqRde/images/2409773002-c1.png)  ![c2.png](https://bitbucket.org/repo/MjqRde/images/3467576671-c2.png)
+![raw data](./compass_raw.png)  ![scaled data](./compass-scaled.png)
 
 ### Distance Controller ###
 Sharp GP2Y0A41SK0F analog infrared distance sensor. The sensor needs 5V to work, but the output signal (= ADC input) is 3.3V max. So the ADC can be operated at VDD = VREF = 3.3V without the need for a signal level shifter.
