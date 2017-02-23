@@ -9,7 +9,7 @@ include::setup_tool_chain.asciidoc[]
 
 include::add_sensors.asciidoc[]
 
-include::extra_fun_features.asciidoc
+include::extra_fun_features.asciidoc[]
 
 include::install_opencv.asciidoc[]
 

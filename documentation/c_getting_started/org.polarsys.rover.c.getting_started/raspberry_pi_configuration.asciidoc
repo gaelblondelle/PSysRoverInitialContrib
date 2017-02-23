@@ -5,7 +5,7 @@ With these steps, you prepare your Raspberry Pi 3 to make it ready to be the cor
 You need:
 
 * A raspberry pi 3
-* A micro-SD card
+* A micro-SD card (I use a 16Gbytes card)
 
 For the duration of the installation:
 
@@ -291,7 +291,7 @@ Update the SSH configuration:
  sudo nano /etc/ssh/sshd_config
 
 Find the line "PermitRootLogin without-password" and edit it to:
- 
+ fg
  PermitRootLogin yes
  
 Reboot you pi, or restart sshd using:
