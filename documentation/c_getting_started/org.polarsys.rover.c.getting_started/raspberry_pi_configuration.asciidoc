@@ -1,4 +1,4 @@
-== First contact with the Raspberry Pi
+== Step 1 - First contact with the Raspberry Pi
 
 With these steps, you prepare your Raspberry Pi 3 to make it ready to be the core of your Rover.
 
@@ -13,7 +13,7 @@ For the duration of the installation:
 * A screen and an HDMI cable
 * An Ethernet cable
 
-=== Install Raspbianfootnote:[Alternatively install the PolarSys Rover OS]
+=== Step 1.1 - Install Raspbianfootnote:[Alternatively install the PolarSys Rover OS]
 The https://www.raspberrypi.org[Raspberry Pi foundation] provides pre-packaged versions of Raspbian through their https://www.raspberrypi.org/downloads/[NOOBS installer]. 
 
 Installation steps:
@@ -25,7 +25,7 @@ Installation steps:
 
 You don't need to setup the wifi connection during installation as you will certainly connect your Raspberry Pi through and Ethernet cable.
 
-==== Network
+=== Step 1.2 - Network
 Enable SSH:
 
 * login to your Raspberry Pi
@@ -48,7 +48,7 @@ Then log onto your raspberry pi through ssh:
 >ssh pi@192.168.2.5 # in my case
 ....
 
-==== Keep your Rpi up to date
+=== Step 1.3 - Keep your Rpi up to date
 ....
 >sudo apt-get update
 >sudo apt-get upgrade
@@ -56,11 +56,11 @@ Then log onto your raspberry pi through ssh:
 
 Then take a coffee while all updates are being downloaded.
 
-== Network connections
-=== Ethernet connection
+=== Step 1.4 - Network connections
+==== Ethernet connection
 Except during installation phases, you don't need to use the ethernet connection between your Raspberry Pi and your laptop.
 
-=== Setup Raspberry Pi as a wifi access pointfootnote:[Inspired from this https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/[tuto] about how to setup the Raspberry Pi 3 as a wifi access point.]
+==== Setup Raspberry Pi as a wifi access pointfootnote:[Inspired from this https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/[tuto] about how to setup the Raspberry Pi 3 as a wifi access point.]
 
 Install hostapd (to manage the access point) and dnsmasq (to offer dhcp
 to clients)
@@ -229,7 +229,7 @@ Now, let's start the services
 > sudo service dnsmasq start  
 ....
 
-== Install Wiring Pi
+=== Step 1.5 - Install Wiring Pi
 
 You should start by installing the WiringPi library because we will need
 it for the Rover, and it makes it easy to perform some initial tests.
@@ -251,20 +251,23 @@ Check install wit the command
 > gpio readall
 ....
 
-== The Raspberry Pi Hello World
+=== Step 1.6 - The Raspberry Pi Hello World
 
-In this section, we set a LED on thanks to Wiring Pi. We will use the LED later in the project.
+In this section, we set a LED on thanks to Wiring Pi. 
 
-Connect a led and test it. (see the config part of the
-http://iot.eclipse.org/java/tutorial/[greenhouse tutorial])
+We can either use a regular LED with a resistor of ~100Ω or a Grove LED that includes both the LED and the resistor.
 
-With a Grove LED and a pin Female Jumper to Grove 4 pin Conversion
+Here is the schema using simply an LED and a resistor:
+image:images/Rpi3+LED_bb.png[Raspberry Pi 3 + LED]
+
+
+If you With a Grove LED and a pin Female Jumper to Grove 4 pin Conversion
 Cable, connect: 
 
 * BLACK wire goes on PIN#14 
 * RED wire goes on PIN#02 
-* YELLOW wire goes on PIN#11 (Pin numbered #17 on the PLOLU #2756 controler) 
-* The WHITE wire is not used in the case of the LED – you only really need one pin to toggle a LED on or off, right? :-) – so you can leave it dangling or connect it to a Ground pin header.
+* YELLOW wire goes on PIN#11 (Pin numbered #17 on the POLOLU #2756 controler) 
+* The WHITE wire is not used in the case of the LED so you can leave it dangling or connect it to a Ground pin header.
 
 ....
 > ssh pi@192.168.2.3
@@ -276,9 +279,10 @@ Cable, connect:
 # Your led should be off
 ....
 
-_If the LED does not turn on, check if your LED is adjustable and eventually adjust the light and polarity with a screw driver._
+_If the LED does not turn on, check polarity. You can safely inverse your LED. 
+The Grove LED is also adjustable so you may have to adjust the light power with a screw driver._
 
-== Enable distant connection for root
+=== Step 1.7 - Enable distant connection for root
 
 Disclaimer: Of course, that's not a good practice in terms of security. But WiringPi library needs to be "root" in order to interact with GPIOs. So the easiest way is just to enable root login so that your Eclipse can remotely log as root.
 
