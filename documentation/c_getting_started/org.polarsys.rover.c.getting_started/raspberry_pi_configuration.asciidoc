@@ -255,10 +255,13 @@ Check install wit the command
 
 In this section, we set a LED on thanks to Wiring Pi. 
 
-We can either use a regular LED with a resistor of ~100Ω or a Grove LED that includes both the LED and the resistor.
+We can either use a regular LED with a resistor of ~150Ω or a Grove LED that includes both the LED and the resistor.
 
 Here is the schema using simply an LED and a resistor:
-image:images/Rpi3+LED_bb.png[Raspberry Pi 3 + LED]
+image:images/Rpi3+LED_bb.png[Raspberry Pi 3 + LED schema]
+
+* Black wire on pin #6 (GND) 
+* Orange wire on pin #11 (GPIO#17) 
 
 
 If you With a Grove LED and a pin Female Jumper to Grove 4 pin Conversion
@@ -278,6 +281,8 @@ Cable, connect:
 > gpio write 0 0
 # Your led should be off
 ....
+
+image:images/Rpi3+LED_photo.png[Raspberry Pi 3 + LED photo]
 
 _If the LED does not turn on, check polarity. You can safely inverse your LED. 
 The Grove LED is also adjustable so you may have to adjust the light power with a screw driver._

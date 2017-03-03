@@ -1,20 +1,49 @@
-== Setup tool chain
+== Step 2 - Setup your environment for cross development and debugging
 
-http://www.welzels.de/blog/en/arm-cross-compiling-with-mac-os-x/[Setup
+=== Step 2.1 - Install a crossplatform toolchain
+In order to setup your development environment for cross development between your laptop and the RPi, you need to install the tool chain on your laptop. Here are the different options:
+ 
+* Mac OsX: http://www.welzels.de/blog/en/arm-cross-compiling-with-mac-os-x/[Setup
 cross compilation for mac-os-x]
+* Windows: TBD
+* Linux: TBD
 
+=== Step 2.2 - Copy Wiring Pi binaries on your laptop
 Previously, we compiled wirinPi on the target Raspberry Pi.
-Copy the content of the whole directory wiringPi/wiringPi to the laptop.
+Copy the content of the whole wiringPi directory  to the laptop in directory "~/PSysRover/prereq"
 
-In CDT, add:
+=== Step 2.3 - Create the IoT_Hello_Wrodl project in CDT
 
-* Configure cross compiler includes
-image:images/cross_compilation_includes.png[Configure cross compiler includes]
-* Configure project includes image:images/project_includes.png[Configure
-project includes]
-* Configure project libraries image:images/project_libraries.png[Project
-Libraries names] image:images/project_library_path.png[Project Libraries Path]
+* Start project creation wizard
+** Select Cross GCC toolchain
 
+image:images/cdt_create_project_Iot_hello_world.png[Create IoT_Hello_World project]
+
+* Configure Cross GCC toolchain - This configuration was done on OsX
+** Cross Compiler Prefix: "arm-linux-gnueabihf-"
+** Cross Compiler Path: "/usr/local/linaro/arm-linux-gnueabihf-raspbian"
+
+image:images/cdt_create_project_cross-gcc-command.png[Cross GCC toolchain configuration]
+
+=== Step 2.3 - Configure the CDT project
+Edit the project properties, add:
+
+//* Configure cross compiler includes
+//image:images/cross_compilation_includes.png[Configure cross compiler includes]
+
+* Configure project includes 
+
+image:images/project_includes.png[Configure project includes]
+
+* Configure project libraries 
+
+image:images/project_libraries.png[Project Libraries names] 
+
+* Configure project library path
+
+image:images/project_library_path.png[Project Libraries Path]
+
+=== Step 2.4 - Create the application folder on the RPi
 On the Rpi, create the /home/pi/rover directory.
 
 ....
@@ -22,9 +51,7 @@ On the Rpi, create the /home/pi/rover directory.
 > mkdir rover
 ....
 
-Run configuration image:images/run_configuration.png[Run configuration] Sets
-the sticky bit to run the program as root. Necessary for wiringpi.
-
+=== Step 2.5 - Back to the RPi Hello World
 Sample code:
 
 ....
@@ -53,3 +80,15 @@ int main (void)
     return EXIT_SUCCESS;
 }
 ....
+
+=== Step 2.6 - Remote execution of the code
+
+Run configuration 
+
+image:images/run_configuration.png[Run configuration] 
+
+Log on the Raspberry PI as root. Even if you learnt that you should never log as root, it makes it much easier as wiringPi requires root rights to manage the GPIO.
+
+=== Step 2.7 - Remote debugging
+
+To be completed
