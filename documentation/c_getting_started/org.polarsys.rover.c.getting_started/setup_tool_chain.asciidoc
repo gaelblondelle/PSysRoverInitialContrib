@@ -5,14 +5,14 @@ In order to setup your development environment for cross development between you
  
 * Mac OsX: http://www.welzels.de/blog/en/arm-cross-compiling-with-mac-os-x/[Setup
 cross compilation for mac-os-x]
-* Windows: TBD
+* Windows: http://www.gurucoding.com/en/rpi_cross_compiler/index.php [Build your Windows-to-RaspberryPi cross-compiler]
 * Linux: TBD
 
 === Step 2.2 - Copy Wiring Pi binaries on your laptop
 Previously, we compiled wirinPi on the target Raspberry Pi.
 Copy the content of the whole wiringPi directory  to the laptop in directory "~/PSysRover/prereq"
 
-=== Step 2.3 - Create the IoT_Hello_Wrodl project in CDT
+=== Step 2.3 - Create the IoT_Hello_World project in CDT
 
 * Start project creation wizard
 ** Select Cross GCC toolchain
@@ -87,8 +87,31 @@ Run configuration
 
 image:images/run_configuration.png[Run configuration] 
 
+Remote Host connection
+
+image:images/remote_connection.png[Remote Connection] 
+
 Log on the Raspberry PI as root. Even if you learnt that you should never log as root, it makes it much easier as wiringPi requires root rights to manage the GPIO.
 
-=== Step 2.7 - Remote debugging
+=== Step 2.7 - Remote debugging setup
+Thanks to Mikhail Kupchik for his excellent page about  http://www.gurucoding.com/en/raspberry_pi_eclipse/index.php[using Eclipse as an IDE for the Raspberry Pi]. This website is helpful when you have to find the right remote debug configurations.
 
-To be completed
+Setting up the remote debugging is not immediate as you need to have a consistent gdb and gdbserver chain on both your workstation and your raspberry pi. You need to follow these steps:
+
+. Copy the gdbserver available in your cross-compilation tool chain to your raspberry pi: 
+* You can use Filezilla or scp
+* If you have installed the cross-toolchain for Mac Os X, the gdbserver can be found on /usr/local/linaro/arm-linux-gnueabihf-raspbian/arm-linux-gnueabihf/debug-root/usr/bin/ 
+* Copy gdbserver to the target directory is /home/pi/tools as user root so that it can be executed remotely by our launch configuration that logs as root. 
+. Create your remote debug configuration:
+image:images/debug_configuration.png[Debug configuration] 
+. Configure local debugger path on the "Debugger tab"
+image:images/debug_configuration_debug_tab.png[Configure Debug tab] 
+. Setup the GdbServer Settings
+image:images/debug_configuration_gdbserver_tab.png[Configure gdbserver configuration] 
+
+=== Step 2.8 - Remote debug session
+Launch your remote debug launch configuration. Eclipse CDT will switch to the Debug perspective.
+
+Here is what a remote debugging session of this IoTHelloWorld looks like:
+image:images/remote_debug_IoT_Hello_World.png[Remote Session IoT Hello World] 
+
